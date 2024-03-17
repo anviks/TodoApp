@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{8750AA97-9E9C-4E08-977E-C57A9811BECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{D8164897-D492-43FF-8DE2-B8B72178E33E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C01F3E08-AAF0-4074-9B30-3132C1F2BACA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionFolder", "{4E78757C-4854-4C79-B1F3-289AF851E35A}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		README.md = README.md
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8750AA97-9E9C-4E08-977E-C57A9811BECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8750AA97-9E9C-4E08-977E-C57A9811BECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8750AA97-9E9C-4E08-977E-C57A9811BECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8750AA97-9E9C-4E08-977E-C57A9811BECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8164897-D492-43FF-8DE2-B8B72178E33E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8164897-D492-43FF-8DE2-B8B72178E33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8164897-D492-43FF-8DE2-B8B72178E33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8164897-D492-43FF-8DE2-B8B72178E33E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C01F3E08-AAF0-4074-9B30-3132C1F2BACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C01F3E08-AAF0-4074-9B30-3132C1F2BACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C01F3E08-AAF0-4074-9B30-3132C1F2BACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C01F3E08-AAF0-4074-9B30-3132C1F2BACA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

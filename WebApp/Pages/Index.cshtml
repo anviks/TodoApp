@@ -1,0 +1,138 @@
+@page
+@using Domain
+@model WebApp.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<h1 class="main-heading">Tasks</h1>
+
+<p>
+    Total tasks: @Model.TodoTask.Count
+    <br/>
+    Completed tasks: @Model.TodoTask.Count(t => t.IsCompleted)
+    <br/>
+    Incomplete tasks: @Model.TodoTask.Count(t => !t.IsCompleted)
+    <br/>
+    <a asp-page="Create">Create New Task</a>
+</p>
+
+<form method="get">
+    <div class="search-and-heading">
+        <div class="form-group">
+            <label asp-for="TitleFilter" class="control-label"></label>
+            <br/>
+            <input asp-for="TitleFilter" class="form-search"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryFilter" class="control-label"></label>
+            <br/>
+            <input asp-for="CategoryFilter" class="form-search"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="DescriptionFilter" class="control-label"></label>
+            <br/>
+            <input asp-for="DescriptionFilter" class="form-search"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="PriorityFilter" class="control-label"></label>
+            <br/>
+            <select asp-for="PriorityFilter" class="form-search" asp-items="@(new SelectList(Enum.GetNames<EPriority>()))">
+                <option value="">All</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Apply filters</button>
+            <a asp-page="./Index" class="btn btn-danger">Clear filters</a>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            <a class="sort-button" asp-route-sortBy="@nameof(TodoTask.Title)" asp-route-sortAscending="@(!Model.SortAscending ?? true)">
+                @Html.DisplayNameFor(model => model.TodoTask[0].Title)
+            </a>
+        </th>
+        <th>
+            <a class="sort-button" asp-route-sortBy="@nameof(TodoTask.Category)" asp-route-sortAscending="@(!Model.SortAscending ?? true)">
+                @Html.DisplayNameFor(model => model.TodoTask[0].Category)
+            </a>
+        </th>
+        <th>
+            <a class="sort-button" asp-route-sortBy="@nameof(TodoTask.Description)" asp-route-sortAscending="@(!Model.SortAscending ?? true)">
+                @Html.DisplayNameFor(model => model.TodoTask[0].Description)
+            </a>
+        </th>
+        <th>
+            <a class="sort-button" asp-route-sortBy="@nameof(TodoTask.Priority)" asp-route-sortAscending="@(!Model.SortAscending ?? true)">
+                @Html.DisplayNameFor(model => model.TodoTask[0].Priority)
+            </a>
+        </th>
+        <th>
+            <a class="sort-button" asp-route-sortBy="@nameof(TodoTask.CreatedAt)" asp-route-sortAscending="@(!Model.SortAscending ?? true)">
+                @Html.DisplayNameFor(model => model.TodoTask[0].CreatedAt)
+            </a>
+        </th>
+        <th>
+            <a class="sort-button" asp-route-sortBy="@nameof(TodoTask.Deadline)" asp-route-sortAscending="@(!Model.SortAscending ?? true)">
+                @Html.DisplayNameFor(model => model.TodoTask[0].Deadline)
+            </a>
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.TodoTask)
+    {
+        <tr class='@(item.IsCompleted ? "task-completed" : "")'>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category!.Name)
+            </td>
+            <td class="task-description">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deadline)
+            </td>
+            <td>
+                <form method="post" asp-page-handler="ToggleComplete">
+                    <input type="hidden" asp-for="TitleFilter" value="@Model.TitleFilter"/>
+                    <input type="hidden" asp-for="CategoryFilter" value="@Model.CategoryFilter"/>
+                    <input type="hidden" asp-for="DescriptionFilter" value="@Model.DescriptionFilter"/>
+                    <input type="hidden" asp-for="PriorityFilter" value="@Model.PriorityFilter"/>
+
+                    <input type="hidden" asp-for="SortBy" value="@Model.SortBy"/>
+                    <input type="hidden" asp-for="SortAscending" value="@Model.SortAscending"/>
+
+                    <input type="hidden" asp-for="TaskId" value="@item.TaskId"/>
+                    <input type="hidden" asp-for="IsCompleted" value="@(!item.IsCompleted)"/>
+                    @if (item.IsCompleted)
+                    {
+                        <input type="submit" value="Mark Incomplete" class="btn btn-danger"/>
+                    }
+                    else
+                    {
+                        <input type="submit" value="Mark Complete" class="btn btn-success"/>
+                    }
+                </form>
+                <a asp-page="./Edit" asp-route-id="@item.TaskId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TaskId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TaskId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

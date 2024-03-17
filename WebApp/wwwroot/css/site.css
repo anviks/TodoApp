@@ -1,0 +1,68 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+td {
+  position: relative;
+  padding: 5px 10px;
+}
+
+tr.task-completed td:not(:last-child):before {
+  content: " ";
+  position: absolute;
+  top: 25%;
+  left: 0;
+  border-bottom: 2px solid #888;
+  width: 100%;
+}
+
+tr.task-completed {
+  color: #888;
+}
+
+td.task-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.search-and-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.main-heading {
+  padding-right: 10rem;
+}
+
+a.sort-button {
+  color: initial;
+  text-decoration: none;
+}

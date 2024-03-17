@@ -1,0 +1,62 @@
+@page
+@model WebApp.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TodoTask</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TodoTask.Category!.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TodoTask.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TodoTask.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.Priority)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TodoTask.Priority)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.CreatedAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TodoTask.CreatedAt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.Deadline)
+        </dt>
+        <dd class="col-sm-10">
+            @{ Console.WriteLine(Model.TodoTask.Deadline); }
+            @(Model.TodoTask.Deadline.HasValue ? Model.TodoTask.Deadline : "None")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TodoTask.IsCompleted)
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.TodoTask.IsCompleted ? "Yes" : "No")
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.TodoTask.TaskId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
