@@ -1,36 +1,7 @@
-```bash
-dotnet tool update --global dotnet-ef
-```
+# TodoApp
 
-```bash
-dotnet ef migrations --project DAL --startup-project ConsoleApp add initial
-```
-
-```bash
-dotnet ef migrations --project DAL --startup-project ConsoleApp remove
-```
-
-```bash
-dotnet ef database --project DAL --startup-project ConsoleApp update
-```
-
-```bash
-dotnet ef database --project DAL --startup-project ConsoleApp drop
-```
-
-```bash
-cd WebApp
-
-dotnet aspnet-codegenerator razorpage `
-    -m Domain.Recipe `
-    -dc AppDbContext `
-    -udl `
-    -outDir Pages/Recipes `
-    --referenceScriptLibraries
-```
-
-* `-m` - Name of the model class
-* `-dc` - Data context class
-* `-udl` - Use default layout
-* `-outDir` - Where to generate the output
-* `--referenceScriptLibraries` - Add validation scripts on Edit and Create pages
+This solution contains a simple CRUD application that allows you to manage your tasks.
+In addition to the CRUD operations, the application also allows you to mark tasks as completed,
+sort tasks by title, category, description, priority, creation date and deadline,
+and to filter tasks by any combination of title, category, description and priority.
+It was made using Razor Pages and Entity Framework Core as an exam practical task (time limit: 8 hours).
